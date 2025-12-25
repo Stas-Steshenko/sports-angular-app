@@ -28,3 +28,41 @@
   color: #000000;
   font-weight: 500;
 }
+
+.search-wrapper {
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search-input {
+  width: 100%;
+  max-width: 500px;
+  padding: 15px 20px;
+  font-family: 'Arial Black', sans-serif;
+  font-size: 1.1rem;
+  border: 4px solid #000;
+  outline: none;
+  text-transform: uppercase;
+  transition: transform 0.2s ease;
+}
+
+.search-input:focus {
+  transform: scale(1.02);
+  background-color: #fff9f9;
+}
+
+.search-info {
+  margin-top: 10px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+.no-results {
+  text-align: center;
+  font-family: 'Arial Black', sans-serif;
+  padding: 50px;
+  border: 2px dashed #ccc;
+  color: #888;
+}

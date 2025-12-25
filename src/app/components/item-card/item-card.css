@@ -94,3 +94,26 @@
   text-transform: uppercase;
   color: #333;
 }
+
+.card-footer {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.details-btn {
+  width: 100%;
+  background-color: #000000;
+  color: #ffffff;
+  border: 3px solid #000000;
+  padding: 10px 0;
+  font-family: 'Arial Black', sans-serif;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.details-btn:hover {
+  background-color: #ffffff;
+  color: #000000;
+}

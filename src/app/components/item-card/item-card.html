@@ -9,7 +9,6 @@
 
   <div class="card-content">
     <div class="teams-line">
-
       <div class="team-block">
         <img [src]="match.logoHome" [alt]="match.homeTeam" class="team-logo">
         <span class="team-name">{{ match.homeTeam }}</span>
@@ -23,12 +22,16 @@
         <img [src]="match.logoAway" [alt]="match.awayTeam" class="team-logo">
         <span class="team-name">{{ match.awayTeam }}</span>
       </div>
-
     </div>
 
     <div class="match-details">
       <span class="status-badge">{{ match.status }}</span>
       <span class="time-text" *ngIf="match.matchTime"> | {{ match.matchTime }}</span>
     </div>
+
+    <div class="card-footer">
+      <button class="details-btn" (click)="onDetailsClick()">ДЕТАЛЬНІШЕ</button>
+    </div>
+
   </div>
 </div>

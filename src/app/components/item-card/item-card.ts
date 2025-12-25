@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Match } from '../../shared/models/match.model';
 
@@ -11,4 +11,10 @@ import { Match } from '../../shared/models/match.model';
 })
 export class ItemCardComponent {
   @Input() match!: Match;
+
+  @Output() selectMatch = new EventEmitter<Match>();
+
+  onDetailsClick(): void {
+    this.selectMatch.emit(this.match);
+  }
 }

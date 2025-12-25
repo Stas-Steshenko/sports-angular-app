@@ -1,10 +1,25 @@
 <section class="matches-container">
   <h2 class="section-title">Matchday Overview</h2>
 
+  <div class="search-wrapper">
+    <input
+      type="text"
+      [(ngModel)]="searchTerm"
+      placeholder="ПОШУК КОМАНДИ..."
+      class="search-input"
+    >
+    <p class="search-info" *ngIf="searchTerm">Пошук для: <strong>{{ searchTerm }}</strong></p>
+  </div>
+
   <div class="matches-grid">
     <app-item-card
-      *ngFor="let matchItem of matches"
-      [match]="matchItem">
+      *ngFor="let matchItem of filteredMatches"
+      [match]="matchItem"
+      (selectMatch)="handleMatchSelect($event)">
     </app-item-card>
+  </div>
+
+  <div *ngIf="filteredMatches.length === 0" class="no-results">
+    НІЧОГО НЕ ЗНАЙДЕНО ЗА ВАШИМ ЗАПИТОМ
   </div>
 </section>
