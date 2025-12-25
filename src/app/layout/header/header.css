@@ -1,9 +1,7 @@
 .football-header {
   background-color: #ffffff;
   color: #000000;
-  /* Додаємо відступ 2rem зліва, щоб напис виглядав акуратно */
   padding: 1.5rem 2rem;
-  /* Змінюємо center на left */
   text-align: left;
   border-bottom: 2px solid #000000;
 }

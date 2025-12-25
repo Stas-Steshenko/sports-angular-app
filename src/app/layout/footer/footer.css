@@ -3,13 +3,12 @@
   color: #000000;
   padding: 1rem;
   text-align: center;
-  /* Чорна межа зверху */
   border-top: 2px solid #000000;
 }
 
 .footer-text {
   margin: 0;
-  font-weight: 700; /* Жирний текст для футера */
+  font-weight: 700;
   font-size: 0.9rem;
   text-transform: uppercase;
 }
