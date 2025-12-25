@@ -1,0 +1,19 @@
+.football-header {
+  background-color: #ffffff;
+  color: #000000;
+  /* Додаємо відступ 2rem зліва, щоб напис виглядав акуратно */
+  padding: 1.5rem 2rem;
+  /* Змінюємо center на left */
+  text-align: left;
+  border-bottom: 2px solid #000000;
+}
+
+.app-logo {
+  margin: 0;
+  font-family: 'Arial Black', sans-serif;
+  font-weight: 900;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  color: #000000;
+}
