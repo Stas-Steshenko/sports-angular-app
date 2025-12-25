@@ -1,0 +1,41 @@
+:host {
+  /* Глобальний шрифт для всього додатка */
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  padding: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Стилізація секції як окремого блоку з фото */
+.matches-container {
+  border: 2px solid #000000; /* Товста чорна рамка */
+  border-radius: 12px;       /* Заокруглені кути */
+  padding: 2rem;
+  background: #ffffff;
+}
+
+.section-title {
+  font-family: 'Arial Black', sans-serif;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  margin-top: 0;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #000000; /* Лінія під заголовком */
+  margin-bottom: 1.5rem;
+  color: #000000;
+}
+
+.info-text {
+  color: #000000;
+  font-weight: 500;
+  line-height: 1.6;
+}
