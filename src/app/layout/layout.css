@@ -1,5 +1,4 @@
 :host {
-  /* Глобальний шрифт для всього додатка */
   font-family: 'Inter', 'Segoe UI', sans-serif;
   background-color: #ffffff;
   display: flex;
@@ -15,10 +14,9 @@
   width: 100%;
 }
 
-/* Стилізація секції як окремого блоку з фото */
 .matches-container {
-  border: 2px solid #000000; /* Товста чорна рамка */
-  border-radius: 12px;       /* Заокруглені кути */
+  border: 2px solid #000000;
+  border-radius: 12px;
   padding: 2rem;
   background: #ffffff;
 }
@@ -29,7 +27,7 @@
   text-transform: uppercase;
   margin-top: 0;
   padding-bottom: 1rem;
-  border-bottom: 2px solid #000000; /* Лінія під заголовком */
+  border-bottom: 2px solid #000000;
   margin-bottom: 1.5rem;
   color: #000000;
 }
