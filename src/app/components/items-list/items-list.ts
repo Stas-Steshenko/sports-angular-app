@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ItemCardComponent } from '../item-card/item-card';
 import { Match } from '../../shared/models/match.model';
 
 @Component({
   selector: 'app-items-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ItemCardComponent],
   templateUrl: './items-list.html',
   styleUrl: './items-list.css'
 })
@@ -18,7 +19,9 @@ export class ItemsListComponent {
       homeScore: 2,
       awayScore: 1,
       status: 'Full Time',
-      matchTime: 'Finished'
+      matchTime: 'Finished',
+      logoHome: 'https://upload.wikimedia.org/wikipedia/sco/5/53/Arsenal_FC.svg',
+      logoAway: 'https://upload.wikimedia.org/wikipedia/uk/c/cc/Chelsea_FC.svg'
     },
     {
       id: 2,
@@ -27,7 +30,9 @@ export class ItemsListComponent {
       homeScore: 1,
       awayScore: 2,
       status: 'Live',
-      matchTime: "75'"
+      matchTime: "75'",
+      logoHome: 'https://upload.wikimedia.org/wikipedia/sco/7/7a/Manchester_United_FC_crest.svg',
+      logoAway: 'https://upload.wikimedia.org/wikipedia/uk/e/eb/Manchester_City_FC_badge.svg'
     },
     {
       id: 3,
@@ -36,7 +41,9 @@ export class ItemsListComponent {
       homeScore: 3,
       awayScore: 3,
       status: 'Full Time',
-      matchTime: 'Finished'
+      matchTime: 'Finished',
+      logoHome: 'https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg',
+      logoAway: 'https://upload.wikimedia.org/wikipedia/uk/5/56/Real_Madrid_CF.svg'
     },
     {
       id: 4,
@@ -45,7 +52,9 @@ export class ItemsListComponent {
       homeScore: 0,
       awayScore: 0,
       status: 'Half Time',
-      matchTime: 'Interval'
+      matchTime: 'Interval',
+      logoHome: 'https://upload.wikimedia.org/wikipedia/commons/8/8d/FC_Bayern_M%C3%BCnchen_logo_%282024%29.svg',
+      logoAway: 'https://upload.wikimedia.org/wikipedia/commons/6/67/Borussia_Dortmund_logo.svg'
     }
   ];
 }

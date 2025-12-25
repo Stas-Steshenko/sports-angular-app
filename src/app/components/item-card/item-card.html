@@ -1,1 +1,34 @@
-<p>item-card works!</p>
+<div class="match-card-styled" [ngClass]="{
+    'border-live': match.status === 'Live',
+    'border-finished': match.status === 'Full Time'
+  }">
+
+  <div *ngIf="match.status === 'Live'" class="live-indicator">
+    <span class="dot"></span> LIVE
+  </div>
+
+  <div class="card-content">
+    <div class="teams-line">
+
+      <div class="team-block">
+        <img [src]="match.logoHome" [alt]="match.homeTeam" class="team-logo">
+        <span class="team-name">{{ match.homeTeam }}</span>
+      </div>
+
+      <div class="score-container">
+        <span class="score-box">{{ match.homeScore }} : {{ match.awayScore }}</span>
+      </div>
+
+      <div class="team-block">
+        <img [src]="match.logoAway" [alt]="match.awayTeam" class="team-logo">
+        <span class="team-name">{{ match.awayTeam }}</span>
+      </div>
+
+    </div>
+
+    <div class="match-details">
+      <span class="status-badge">{{ match.status }}</span>
+      <span class="time-text" *ngIf="match.matchTime"> | {{ match.matchTime }}</span>
+    </div>
+  </div>
+</div>

@@ -1,12 +1,10 @@
 <section class="matches-container">
   <h2 class="section-title">Matchday Overview</h2>
 
-  @for (match of matches; track match.id) {
-    <div class="match-card-simple">
-      <strong>{{ match.homeTeam }} {{ match.homeScore }} : {{ match.awayScore }} {{ match.awayTeam }}</strong>
-      <p>Status: {{ match.status }} ({{ match.matchTime }})</p>
-    </div>
-  } @empty {
-    <p>Матчів поки що немає.</p>
-  }
+  <div class="matches-grid">
+    <app-item-card
+      *ngFor="let matchItem of matches"
+      [match]="matchItem">
+    </app-item-card>
+  </div>
 </section>
