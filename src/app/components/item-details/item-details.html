@@ -1,11 +1,11 @@
-<div class="details-page-container" *ngIf="match; else notFound">
+<div class="details-page-container" *ngIf="match$ | async as match; else loadingOrNotFound">
   <a routerLink="/items" class="back-btn">← НАЗАД ДО СПИСКУ</a>
 
   <div class="match-card-styled"
-       [class.border-live]="match.status === 'Live'"
-       [class.border-finished]="match.status === 'Full Time'">
+       [class.border-live]="match.status === 'Live' || match.status === 'LIVE'"
+       [class.border-finished]="match.status === 'Full Time' || match.status === 'FINISHED'">
 
-    <div class="live-indicator" *ngIf="match.status === 'Live'">
+    <div class="live-indicator" *ngIf="match.status === 'Live' || match.status === 'LIVE'">
       <span class="dot"></span> LIVE
     </div>
 
@@ -31,9 +31,12 @@
   </div>
 </div>
 
-<ng-template #notFound>
-  <div class="match-card-styled border-finished">
-    <h2 class="team-name">Матч не знайдено</h2>
-    <a routerLink="/items" class="details-btn">Повернутися до списку</a>
+<ng-template #loadingOrNotFound>
+  <div class="details-page-container">
+    <div class="match-card-styled border-finished" style="text-align: center; padding: 40px;">
+      <h2 class="team-name">Завантаження або матч не знайдено...</h2>
+      <p style="margin-bottom: 20px; color: #666;">Перевірте з'єднання з сервером</p>
+      <a routerLink="/items" class="back-btn">Повернутися до списку</a>
+    </div>
   </div>
 </ng-template>

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { DataService } from '../../shared/services/data';
 import { Match } from '../../shared/models/match.model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-item-details',
@@ -12,7 +13,7 @@ import { Match } from '../../shared/models/match.model';
   styleUrl: './item-details.css',
 })
 export class ItemDetailsComponent implements OnInit {
-  match: Match | undefined;
+  match$!: Observable<Match>;
 
   constructor(
     private route: ActivatedRoute,
@@ -20,12 +21,9 @@ export class ItemDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const idFromUrl = this.route.snapshot.paramMap.get('id');
-
-    if (idFromUrl) {
-      const id = Number(idFromUrl);
-
-      this.match = this.dataService.getItemById(id);
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.match$ = this.dataService.getItemById(id);
     }
   }
 }
