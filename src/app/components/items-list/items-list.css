@@ -66,3 +66,46 @@
   border: 2px dashed #ccc;
   color: #888;
 }
+
+.header-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  border-bottom: 3px solid #000;
+  padding-bottom: 15px;
+}
+
+.header-block .section-title {
+  margin-bottom: 0;
+}
+
+.add-match-btn {
+  display: inline-block;
+  text-decoration: none;
+  background-color: #000000;
+  color: #ffffff;
+  padding: 12px 24px;
+  font-family: 'Arial Black', sans-serif;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  border: 3px solid #000000;
+  transition: all 0.3s ease-out;
+  cursor: pointer;
+}
+
+.plus-icon {
+  margin-right: 8px;
+  font-size: 1.1rem;
+}
+
+.add-match-btn:hover {
+  background-color: #ffffff;
+  color: #000000;
+  transform: scale(1.05);
+}
+
+.add-match-btn:active {
+  transform: scale(0.98);
+  transition: all 0.1s ease;
+}

@@ -7,7 +7,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class DataService {
 
-  private readonly initialMatches: Match[] = [
+  private allMatches: Match[] = [
     {
       id: 1,
       homeTeam: 'Arsenal',
@@ -54,29 +54,37 @@ export class DataService {
     }
   ];
 
-  private matchesSubject = new BehaviorSubject<Match[]>(this.initialMatches);
+  private matchesSubject = new BehaviorSubject<Match[]>(this.allMatches);
 
   getItems(): Observable<Match[]> {
     return this.matchesSubject.asObservable();
   }
 
   getItemById(id: number): Match | undefined {
-    return this.initialMatches.find(m => m.id === id);
+    return this.allMatches.find(m => m.id === id);
   }
 
   filterMatches(searchTerm: string): void {
     const search = searchTerm.toLowerCase().trim();
 
     if (!search) {
-      this.matchesSubject.next(this.initialMatches);
+      this.matchesSubject.next(this.allMatches);
       return;
     }
 
-    const filtered = this.initialMatches.filter(m =>
+    const filtered = this.allMatches.filter(m =>
       m.homeTeam.toLowerCase().includes(search) ||
       m.awayTeam.toLowerCase().includes(search)
     );
 
     this.matchesSubject.next(filtered);
+  }
+
+  addItem(newMatch: Match): void {
+    this.allMatches = [...this.allMatches, newMatch];
+
+    this.matchesSubject.next(this.allMatches);
+
+    console.log('Матч додано успішно!', newMatch);
   }
 }

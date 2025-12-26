@@ -1,5 +1,11 @@
 <section class="matches-container">
-  <h2 class="section-title">Matchday Overview</h2>
+
+  <div class="header-block">
+    <h2 class="section-title">Matchday Overview</h2>
+    <a routerLink="/add" class="add-match-btn">
+      <span class="plus-icon">+</span> ДОДАТИ НОВИЙ МАТЧ
+    </a>
+  </div>
 
   <div class="search-wrapper">
     <input
@@ -13,7 +19,6 @@
   </div>
 
   <ng-container *ngIf="(matches$ | async) as matchesList; else loading">
-
     <div class="matches-grid">
       <app-item-card
         *ngFor="let matchItem of matchesList"
@@ -24,7 +29,6 @@
     <div *ngIf="matchesList.length === 0" class="no-results">
       НІЧОГО НЕ ЗНАЙДЕНО ЗА ВАШИМ ЗАПИТОМ
     </div>
-
   </ng-container>
 
   <ng-template #loading>
