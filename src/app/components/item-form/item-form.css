@@ -1,0 +1,142 @@
+.form-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border: 4px solid #000000;
+}
+
+.form-title {
+  text-align: center;
+  margin-bottom: 30px;
+  font-family: 'Arial Black', sans-serif;
+  text-transform: uppercase;
+  border-bottom: 3px solid #000000;
+  padding-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-family: 'Arial Black', sans-serif;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  color: #000000;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px 15px;
+  font-family: 'Arial Black', sans-serif;
+  font-size: 0.95rem;
+  border: 4px solid #000000;
+  outline: none;
+  text-transform: uppercase;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.form-control:focus {
+  transform: scale(1.02);
+  background-color: #fff9f9;
+}
+
+select.form-control {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 15px;
+}
+
+.form-control.is-invalid {
+  border-color: #ff0000;
+  background-color: #fff0f0;
+}
+
+.error-message {
+  color: #ff0000;
+  font-family: 'Arial Black', sans-serif;
+  font-size: 0.7rem;
+  margin-top: 5px;
+  text-transform: uppercase;
+}
+
+.form-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.submit-btn, .back-btn {
+  padding: 15px;
+  font-family: 'Arial Black', sans-serif;
+  font-size: 1rem;
+  text-transform: uppercase;
+  border: 4px solid #000000;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+
+.submit-btn {
+  flex: 2;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.submit-btn:not(:disabled):hover {
+  background-color: #ffffff;
+  color: #000000;
+  transform: scale(1.02);
+}
+
+.submit-btn:disabled {
+  background-color: #cccccc;
+  border-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+}
+
+.back-btn {
+  flex: 1;
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.back-btn:hover {
+  background-color: #eeeeee;
+  transform: scale(1.02);
+}
+
+.submit-btn:active, .back-btn:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 650px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-actions {
+    flex-direction: column-reverse;
+  }
+
+  .submit-btn, .back-btn {
+    flex: none;
+    width: 100%;
+  }
+}

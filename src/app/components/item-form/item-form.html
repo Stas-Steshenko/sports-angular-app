@@ -1,0 +1,91 @@
+<div class="form-container">
+  <h2 class="form-title">Додати новий матч</h2>
+
+  <form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
+
+    <div class="form-grid">
+
+      <div class="form-group">
+        <label>Домашня команда</label>
+        <input type="text" formControlName="homeTeam" class="form-control"
+               placeholder="НАЗВА..."
+               [class.is-invalid]="itemForm.get('homeTeam')?.invalid && itemForm.get('homeTeam')?.touched">
+
+        <div class="error-message" *ngIf="itemForm.get('homeTeam')?.invalid && itemForm.get('homeTeam')?.touched">
+          <small *ngIf="itemForm.get('homeTeam')?.errors?.['required']">ОБОВ'ЯЗКОВО</small>
+          <small *ngIf="itemForm.get('homeTeam')?.errors?.['minlength']">МІНІМУМ 3 СИМВОЛИ</small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Гостьова команда</label>
+        <input type="text" formControlName="awayTeam" class="form-control"
+               placeholder="НАЗВА..."
+               [class.is-invalid]="itemForm.get('awayTeam')?.invalid && itemForm.get('awayTeam')?.touched">
+
+        <div class="error-message" *ngIf="itemForm.get('awayTeam')?.invalid && itemForm.get('awayTeam')?.touched">
+          <small *ngIf="itemForm.get('awayTeam')?.errors?.['required']">ОБОВ'ЯЗКОВО</small>
+          <small *ngIf="itemForm.get('awayTeam')?.errors?.['minlength']">МІНІМУМ 3 СИМВОЛИ</small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Рахунок (Вдома)</label>
+        <input type="number" formControlName="homeScore" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label>Рахунок (В гостях)</label>
+        <input type="number" formControlName="awayScore" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label>Час матчу / Хвилина</label>
+        <input type="text" formControlName="matchTime" class="form-control"
+               placeholder="НАПР. 45' АБО FINISHED">
+        <div class="error-message" *ngIf="itemForm.get('matchTime')?.invalid && itemForm.get('matchTime')?.touched">
+          <small>ВКАЖІТЬ ЧАС</small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Статус</label>
+        <select formControlName="status" class="form-control">
+          <option value="Scheduled">Scheduled</option>
+          <option value="Live">Live</option>
+          <option value="Full Time">Full Time</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>URL Лого (Дома)</label>
+        <input type="text" formControlName="logoHome" class="form-control"
+               placeholder="HTTP://...">
+        <div class="error-message" *ngIf="itemForm.get('logoHome')?.invalid && itemForm.get('logoHome')?.touched">
+          <small>ПОТРІБНЕ ПОСИЛАННЯ</small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>URL Лого (В гостях)</label>
+        <input type="text" formControlName="logoAway" class="form-control"
+               placeholder="HTTP://...">
+        <div class="error-message" *ngIf="itemForm.get('logoAway')?.invalid && itemForm.get('logoAway')?.touched">
+          <small>ПОТРІБНЕ ПОСИЛАННЯ</small>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="form-actions">
+      <button type="button" class="back-btn" (click)="onCancel()">
+        ← СКАСУВАТИ
+      </button>
+
+      <button type="submit" class="submit-btn" [disabled]="itemForm.invalid">
+        ЗБЕРЕГТИ МАТЧ
+      </button>
+    </div>
+
+  </form>
+</div>
