@@ -1,0 +1,39 @@
+<div class="details-page-container" *ngIf="match; else notFound">
+  <a routerLink="/items" class="back-btn">← НАЗАД ДО СПИСКУ</a>
+
+  <div class="match-card-styled"
+       [class.border-live]="match.status === 'Live'"
+       [class.border-finished]="match.status === 'Full Time'">
+
+    <div class="live-indicator" *ngIf="match.status === 'Live'">
+      <span class="dot"></span> LIVE
+    </div>
+
+    <div class="teams-line">
+      <div class="team-block">
+        <img [src]="match.logoHome" [alt]="match.homeTeam" class="team-logo big-logo">
+        <span class="team-name big-name">{{ match.homeTeam }}</span>
+      </div>
+
+      <div class="score-section">
+        <div class="match-status-top">{{ match.status }}</div>
+        <div class="match-time-display">{{ match.matchTime }}</div>
+        <div class="score-box">
+          {{ match.homeScore }} : {{ match.awayScore }}
+        </div>
+      </div>
+
+      <div class="team-block">
+        <img [src]="match.logoAway" [alt]="match.awayTeam" class="team-logo big-logo">
+        <span class="team-name big-name">{{ match.awayTeam }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #notFound>
+  <div class="match-card-styled border-finished">
+    <h2 class="team-name">Матч не знайдено</h2>
+    <a routerLink="/items" class="details-btn">Повернутися до списку</a>
+  </div>
+</ng-template>

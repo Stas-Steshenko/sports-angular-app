@@ -41,8 +41,4 @@ export class ItemsListComponent implements OnInit, OnDestroy {
       console.log('Відписка виконана успішно');
     }
   }
-
-  handleMatchSelect(match: Match) {
-    console.log('Selected:', match);
-  }
 }

@@ -101,6 +101,10 @@
 }
 
 .details-btn {
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  box-sizing: border-box;
   width: 100%;
   background-color: #000000;
   color: #ffffff;

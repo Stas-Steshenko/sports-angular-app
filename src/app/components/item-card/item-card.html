@@ -30,7 +30,7 @@
     </div>
 
     <div class="card-footer">
-      <button class="details-btn" (click)="onDetailsClick()">ДЕТАЛЬНІШЕ</button>
+      <a [routerLink]="['/items', match.id]" class="details-btn">ДЕТАЛЬНІШЕ</a>
     </div>
 
   </div>
