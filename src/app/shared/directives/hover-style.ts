@@ -1,0 +1,30 @@
+import { Directive, ElementRef, HostListener, Renderer2 } from '@angular/core';
+
+@Directive({
+  selector: '[appHoverStyle]',
+  standalone: true
+})
+export class HoverStyleDirective {
+
+  constructor(
+    private el: ElementRef,
+    private renderer: Renderer2
+  ) {}
+
+  @HostListener('mouseenter') onMouseEnter() {
+    this.changeStyle('scale(1.03)', '#000', '0 10px 20px rgba(0,0,0,0.1)');
+  }
+
+  @HostListener('mouseleave') onMouseLeave() {
+    this.changeStyle('scale(1)', '', 'none');
+  }
+
+  private changeStyle(transform: string, borderColor: string, shadow: string) {
+    this.renderer.setStyle(this.el.nativeElement, 'transform', transform);
+    this.renderer.setStyle(this.el.nativeElement, 'transition', 'all 0.3s ease');
+
+    if (shadow) {
+      this.renderer.setStyle(this.el.nativeElement, 'box-shadow', shadow);
+    }
+  }
+}
