@@ -15,8 +15,7 @@
   <div class="matches-grid">
     <app-item-card
       *ngFor="let matchItem of matches"
-      [match]="matchItem"
-      (selectMatch)="handleMatchSelect($event)">
+      [match]="matchItem">
     </app-item-card>
   </div>
 

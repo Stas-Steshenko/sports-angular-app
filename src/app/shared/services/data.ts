@@ -60,6 +60,10 @@ export class DataService {
     return this.matchesSubject.asObservable();
   }
 
+  getItemById(id: number): Match | undefined {
+    return this.initialMatches.find(m => m.id === id);
+  }
+
   filterMatches(searchTerm: string): void {
     const search = searchTerm.toLowerCase().trim();
 
