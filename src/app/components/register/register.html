@@ -1,0 +1,41 @@
+<div class="auth-container">
+  <div class="auth-card">
+    <div class="auth-header">
+      <h1>РЕЄСТРАЦІЯ</h1>
+      <div class="divider"></div>
+    </div>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="form-field">
+        <label>ІМ'Я КОРИСТУВАЧА</label>
+        <input type="text" formControlName="username" placeholder="PLAYER_1">
+      </div>
+
+      <div class="form-field">
+        <label>EMAIL</label>
+        <input type="email" formControlName="email" placeholder="your@email.com">
+      </div>
+
+      <div class="form-field">
+        <label>ПАРОЛЬ</label>
+        <input type="password" formControlName="password" placeholder="••••••••">
+      </div>
+
+      <div class="form-field">
+        <label>ПІДТВЕРДЖЕННЯ ПАРОЛЯ</label>
+        <input type="password" formControlName="confirmPassword" placeholder="••••••••">
+      </div>
+
+      <div class="error-msg" *ngIf="errorMessage">{{ errorMessage }}</div>
+
+      <button type="submit" class="main-btn" [disabled]="registerForm.invalid">
+        ЗАРЕЄСТРУВАТИСЯ
+      </button>
+
+      <div class="auth-footer">
+        <span>ВЖЕ Є АКАУНТ?</span>
+        <a routerLink="/login">УВІЙТИ</a>
+      </div>
+    </form>
+  </div>
+</div>
