@@ -1,0 +1,32 @@
+<div class="auth-container">
+  <div class="auth-card">
+    <div class="auth-header">
+      <h1>ВХІД</h1>
+      <div class="divider"></div>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="form-field">
+        <label>EMAIL</label>
+        <input type="email" formControlName="email" placeholder="your@email.com"
+               [class.error-border]="loginForm.get('email')?.touched && loginForm.get('email')?.invalid">
+      </div>
+
+      <div class="form-field">
+        <label>ПАРОЛЬ</label>
+        <input type="password" formControlName="password" placeholder="••••••••">
+      </div>
+
+      <div class="error-msg" *ngIf="errorMessage">{{ errorMessage }}</div>
+
+      <button type="submit" class="main-btn" [disabled]="loginForm.invalid">
+        УВІЙТИ →
+      </button>
+
+      <div class="auth-footer">
+        <span>НЕМАЄ АКАУНТУ?</span>
+        <a routerLink="/register">СТВОРИТИ</a>
+      </div>
+    </form>
+  </div>
+</div>
