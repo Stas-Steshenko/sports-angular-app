@@ -1,7 +1,7 @@
-<div class="match-card-styled" [ngClass]="{
-    'border-live': match.status === 'Live',
-    'border-finished': match.status === 'Full Time'
-  }">
+<div class="match-card-styled"
+     appHoverStyle
+     [class.border-live]="match.status === 'Live'"
+     [class.border-finished]="match.status === 'Full Time'">
 
   <div *ngIf="match.status === 'Live'" class="live-indicator">
     <span class="dot"></span> LIVE
@@ -11,7 +11,7 @@
     <div class="teams-line">
       <div class="team-block">
         <img [src]="match.logoHome" [alt]="match.homeTeam" class="team-logo">
-        <span class="team-name">{{ match.homeTeam }}</span>
+        <span class="team-name">{{ match.homeTeam | truncate:10 }}</span>
       </div>
 
       <div class="score-container">
@@ -20,7 +20,7 @@
 
       <div class="team-block">
         <img [src]="match.logoAway" [alt]="match.awayTeam" class="team-logo">
-        <span class="team-name">{{ match.awayTeam }}</span>
+        <span class="team-name">{{ match.awayTeam | truncate:10 }}</span>
       </div>
     </div>
 
@@ -32,6 +32,5 @@
     <div class="card-footer">
       <a [routerLink]="['/items', match.id]" class="details-btn">ДЕТАЛЬНІШЕ</a>
     </div>
-
   </div>
 </div>
