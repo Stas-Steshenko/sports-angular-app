@@ -15,22 +15,16 @@ import { Match } from '../../shared/models/match.model';
 export class ItemFormComponent implements OnInit {
   itemForm!: FormGroup;
 
-  constructor(
-    private dataService: DataService,
-    private router: Router
-  ) {}
+  constructor(private dataService: DataService, private router: Router) {}
 
   ngOnInit(): void {
     this.itemForm = new FormGroup({
       homeTeam: new FormControl('', [Validators.required, Validators.minLength(3)]),
       awayTeam: new FormControl('', [Validators.required, Validators.minLength(3)]),
-
       homeScore: new FormControl(0, [Validators.required, Validators.min(0)]),
       awayScore: new FormControl(0, [Validators.required, Validators.min(0)]),
-
       matchTime: new FormControl('', Validators.required),
       status: new FormControl('Scheduled', Validators.required),
-
       logoHome: new FormControl('', Validators.required),
       logoAway: new FormControl('', Validators.required)
     });
@@ -38,18 +32,13 @@ export class ItemFormComponent implements OnInit {
 
   onSubmit(): void {
     if (this.itemForm.valid) {
-      const newMatch: Match = {
-        ...this.itemForm.value,
-        id: Date.now()
-      };
+      const newMatch: Match = { ...this.itemForm.value, id: Date.now().toString() };
 
-      this.dataService.addItem(newMatch);
-
-      console.log('Матч успішно додано:', newMatch);
-      this.router.navigate(['/items']);
-
+      this.dataService.addItem(newMatch).subscribe({
+        next: () => this.router.navigate(['/items']),
+        error: () => alert('Помилка при збереженні даних на сервер.')
+      });
     } else {
-      console.error('Помилка: Форма заповнена некоректно');
       this.itemForm.markAllAsTouched();
     }
   }
