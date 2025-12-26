@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ItemCardComponent } from '../item-card/item-card';
 import { Match } from '../../shared/models/match.model';
 import { DataService } from '../../shared/services/data';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-items-list',
@@ -12,23 +13,33 @@ import { DataService } from '../../shared/services/data';
   templateUrl: './items-list.html',
   styleUrl: './items-list.css'
 })
-
-export class ItemsListComponent implements OnInit {
+export class ItemsListComponent implements OnInit, OnDestroy {
   searchTerm: string = '';
-
   matches: Match[] = [];
+
+  private dataSubscription?: Subscription;
+
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
-    this.matches = this.dataService.getItems();
+    this.dataSubscription = this.dataService.getItems().subscribe({
+      next: (data: Match[]) => {
+        this.matches = data;
+        console.log('Дані оновлено в компоненті:', data);
+      },
+      error: (err) => console.error('Помилка отримання даних:', err)
+    });
   }
 
-  get filteredMatches(): Match[] {
-    const search = this.searchTerm.toLowerCase().trim();
-    return this.matches.filter(m =>
-      m.homeTeam.toLowerCase().includes(search) ||
-      m.awayTeam.toLowerCase().includes(search)
-    );
+  onSearchChange(): void {
+    this.dataService.filterMatches(this.searchTerm);
+  }
+
+  ngOnDestroy(): void {
+    if (this.dataSubscription) {
+      this.dataSubscription.unsubscribe();
+      console.log('Відписка виконана успішно');
+    }
   }
 
   handleMatchSelect(match: Match) {

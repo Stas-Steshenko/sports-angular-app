@@ -5,6 +5,7 @@
     <input
       type="text"
       [(ngModel)]="searchTerm"
+      (ngModelChange)="onSearchChange()"
       placeholder="ПОШУК КОМАНДИ..."
       class="search-input"
     >
@@ -13,13 +14,13 @@
 
   <div class="matches-grid">
     <app-item-card
-      *ngFor="let matchItem of filteredMatches"
+      *ngFor="let matchItem of matches"
       [match]="matchItem"
       (selectMatch)="handleMatchSelect($event)">
     </app-item-card>
   </div>
 
-  <div *ngIf="filteredMatches.length === 0" class="no-results">
+  <div *ngIf="matches.length === 0" class="no-results">
     НІЧОГО НЕ ЗНАЙДЕНО ЗА ВАШИМ ЗАПИТОМ
   </div>
 </section>
