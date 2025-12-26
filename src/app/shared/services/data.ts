@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Match } from '../models/match.model';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
-  private matches: Match[] = [
+  private readonly initialMatches: Match[] = [
     {
       id: 1,
       homeTeam: 'Arsenal',
@@ -53,7 +54,25 @@ export class DataService {
     }
   ];
 
-  getItems(): Match[] {
-    return this.matches;
+  private matchesSubject = new BehaviorSubject<Match[]>(this.initialMatches);
+
+  getItems(): Observable<Match[]> {
+    return this.matchesSubject.asObservable();
+  }
+
+  filterMatches(searchTerm: string): void {
+    const search = searchTerm.toLowerCase().trim();
+
+    if (!search) {
+      this.matchesSubject.next(this.initialMatches);
+      return;
+    }
+
+    const filtered = this.initialMatches.filter(m =>
+      m.homeTeam.toLowerCase().includes(search) ||
+      m.awayTeam.toLowerCase().includes(search)
+    );
+
+    this.matchesSubject.next(filtered);
   }
 }
